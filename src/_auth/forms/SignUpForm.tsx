@@ -1,4 +1,3 @@
-import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,22 +11,23 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
+import { SignupValidation } from "@/lib/validation";
+import { z } from "zod";
 
 type Props = {};
 
-const formSchema = z.object({
-  username: z.string().min(2).max(50),
-});
-
 const SignUpForm = (props: Props) => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof SignupValidation>>({
+    resolver: zodResolver(SignupValidation),
     defaultValues: {
+      name: "",
       username: "",
+      email: "",
+      password: "",
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = (values: z.infer<typeof SignupValidation>) => {
     console.log(values);
   };
 
