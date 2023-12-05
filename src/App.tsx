@@ -11,11 +11,12 @@ type Props = {};
 const App = (props: Props) => {
   return (
     <main className="flex h-screen">
+      {/* 25:29 */}
       <Routes>
         {/* Public Routes */}
         <Route element={<AuthLayout />}>
           <Route path="/sign-in" element={<SignInForm />} />
-          <Route path="/sign-in" element={<SignUpForm />} />
+          <Route path="/sign-up" element={<SignUpForm />} />
         </Route>
 
         {/* Private Routes */}
