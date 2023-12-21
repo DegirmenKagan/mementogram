@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "./globals.css";
 import { Home } from "./_root/pages";
@@ -6,12 +5,10 @@ import SignInForm from "./_auth/forms/SignInForm";
 import SignUpForm from "./_auth/forms/SignUpForm";
 import AuthLayout from "./_auth/AuthLayout";
 import RootLayout from "./_root/RootLayout";
-type Props = {};
 
-const App = (props: Props) => {
+const App = () => {
   return (
     <main className="flex h-screen">
-      {/* 25:29 */}
       <Routes>
         {/* Public Routes */}
         <Route element={<AuthLayout />}>
