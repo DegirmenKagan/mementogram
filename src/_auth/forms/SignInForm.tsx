@@ -1,8 +1,4 @@
-import React from "react";
-
-type Props = {};
-
-const SignInForm = (props: Props) => {
+const SignInForm = () => {
   return <div>SignInForm</div>;
 };
 
