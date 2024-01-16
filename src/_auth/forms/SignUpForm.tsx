@@ -15,8 +15,10 @@ import { z } from "zod";
 import { Loader } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createUserAccount } from "@/lib/appwrite/api";
+import { useToast } from "@/components/ui/use-toast";
 
 const SignUpForm = () => {
+  const { toast } = useToast();
   const isLoading = false;
   const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(SignupValidation),
@@ -30,7 +32,12 @@ const SignUpForm = () => {
 
   const onSubmit = async (values: z.infer<typeof SignupValidation>) => {
     const newUser = await createUserAccount(values);
-    console.log(newUser);
+    if (!newUser) {
+      return toast({
+        title: "Sign up error. Please try again.",
+      });
+
+    }
   };
 
   return (
